@@ -4,6 +4,29 @@
 
 The intent is to vendor the real Rust `gws` source into this repo with `git subtree`, then build and publish the Toolbox package from that self-contained source tree.
 
+## Toolbox phase 1
+
+This repo now also carries the first Toolbox-facing package shape:
+- `toolbox.pkg.json`
+- `tools/users.list.ts`
+- a tiny WASI guest under `wasm/gws`
+
+For the current phase, the guest is intentionally simple and prints a fixed JSON
+payload for `users list --format json`. The vendored upstream CLI is present for
+later work, but is not yet the executable guest.
+
+Build the phase-1 guest with:
+
+```bash
+./scripts/build-wasm.sh
+```
+
+That writes:
+
+```text
+dist/gws.wasm
+```
+
 ## Subtree workflow
 
 This repo is expected to track an upstream Rust `gws` repository via `git subtree`, not `git submodule`.
