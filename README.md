@@ -15,16 +15,27 @@ For the current phase, the guest is intentionally simple and prints a fixed JSON
 payload for `users list --format json`. The vendored upstream CLI is present for
 later work, but is not yet the executable guest.
 
+This guest is built with the Wasmer/Wasix toolchain, not plain `wasm32-wasip1`.
+It currently targets Wasix Rust release `v2026-02-09.1+rust-1.90`.
+
+`cargo-wasix` still downloads a custom `wasix` toolchain without `cargo`, so the
+build script wraps that downloaded toolchain with the host `cargo` binary before
+running the final build.
+
 Build the phase-1 guest with:
 
 ```bash
 ./scripts/build-wasm.sh
 ```
 
+Current build prerequisites:
+- `cargo-wasix` available in `PATH`
+- host Rust toolchain available at `~/.rustup/toolchains/1.88.0-x86_64-unknown-linux-gnu`
+
 That writes:
 
 ```text
-dist/gws.wasm
+dist/gwc.wasm
 ```
 
 ## Subtree workflow
