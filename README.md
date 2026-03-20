@@ -31,17 +31,21 @@ Use [scripts/subtree.sh](scripts/subtree.sh):
 ./scripts/subtree.sh pull <remote-url> <branch> <prefix>
 ```
 
-Example:
+Current upstream wiring:
 
 ```bash
-./scripts/subtree.sh add git@github.com:solidarity-ai/gws.git main upstream/gws
-./scripts/subtree.sh pull git@github.com:solidarity-ai/gws.git main upstream/gws
+./scripts/subtree.sh add https://github.com/googleworkspace/cli main upstream/googleworkspace-cli
+./scripts/subtree.sh pull https://github.com/googleworkspace/cli main upstream/googleworkspace-cli
 ```
 
 This assumes:
 - the upstream repo root is what we want to vendor
-- the subtree lives under one stable prefix such as `upstream/gws`
+- the subtree lives under one stable prefix such as `upstream/googleworkspace-cli`
 - we build the Toolbox package from this repo, not from the upstream checkout directly
+
+The upstream source is currently vendored at:
+
+- `upstream/googleworkspace-cli`
 
 ## Notes
 
