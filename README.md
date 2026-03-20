@@ -15,27 +15,26 @@ Why:
 
 Assuming a proficient git user, the intended workflow is:
 
-1. Add the upstream remote once.
-2. Pull the upstream source into a dedicated prefix with `git subtree`.
-3. Build/package from the vendored source in this repo.
-4. Repeat subtree pulls when upstream changes.
+1. Vendor the upstream source into a dedicated prefix with `git subtree`.
+2. Build/package from the vendored source in this repo.
+3. Repeat subtree pulls when upstream changes.
 
-The helper script below wraps the common commands.
+The helper script below is now intentionally repo-specific. It just pulls the latest upstream changes from the configured Google Workspace CLI source.
 
 ## Helper script
 
 Use [scripts/subtree.sh](scripts/subtree.sh):
 
 ```bash
-./scripts/subtree.sh add <remote-url> <branch> <prefix>
-./scripts/subtree.sh pull <remote-url> <branch> <prefix>
+./scripts/subtree.sh
 ```
 
 Current upstream wiring:
 
 ```bash
-./scripts/subtree.sh add https://github.com/googleworkspace/cli main upstream/googleworkspace-cli
-./scripts/subtree.sh pull https://github.com/googleworkspace/cli main upstream/googleworkspace-cli
+remote: https://github.com/googleworkspace/cli
+branch: main
+prefix: upstream/googleworkspace-cli
 ```
 
 This assumes:
